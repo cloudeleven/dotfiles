@@ -1,0 +1,9 @@
+defutf8 on
+escape ^Tt
+zombie ^[
+startup_message off
+hardstatus alwayslastline "%0`"
+defscrollback 5000
+shell "/bin/zsh"
+hardstatus string "%?%h%:%t (screen #%n on %H)%?"
+caption always "%{=r dd}%-Lw%40L>%?%F%{=b dR}%:[%? %n%f %t %?%F%{-}%:]%?%+Lw %?%F%-017=follow me, regret%:%=%?"
