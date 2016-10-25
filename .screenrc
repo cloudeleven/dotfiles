@@ -1,6 +1,8 @@
 defutf8 on
 escape ^Tt
-zombie ^[
+
+# don't remove windows from the window list as soon as window process exits.
+zombie kr #  k: destory window, r: resurrect window
 startup_message off
 hardstatus alwayslastline "%0`"
 defscrollback 5000
