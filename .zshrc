@@ -139,6 +139,8 @@ alias df="df -h"
 
 alias su="su -l"
 
+alias ssh='ssh -o ServerAliveInterval=60'
+
 #alias vi='/opt/local/bin/vim'
 
 ## terminal configuration
@@ -181,8 +183,14 @@ esac
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
 # rbenv
-#export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
-#source ~/.rbenv/completions/rbenv.zsh
+if which rbenv > /dev/null; then
+  #export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init - zsh)"
+  #source ~/.rbenv/completions/rbenv.zsh
+fi
 
 
+if [ -f ~/.wp-completion.bash ]; then
+  autoload -U +X bashcompinit && bashcompinit
+  source ~/.wp-completion.bash
+fi
