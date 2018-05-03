@@ -16,6 +16,9 @@ set hidden
 set backspace=indent,eol,start
 set smartindent
 "-----------------------------------------------------------------------------
+" no mouse
+set mouse=
+"-----------------------------------------------------------------------------
 " 検索関連
 set ignorecase
 set smartcase
