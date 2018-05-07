@@ -184,13 +184,18 @@ esac
 
 # rbenv
 if which rbenv > /dev/null; then
-  #export PATH="$HOME/.rbenv/bin:$PATH"
+  export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init - zsh)"
-  #source ~/.rbenv/completions/rbenv.zsh
+  source ~/.rbenv/completions/rbenv.zsh
 fi
 
+if [ -d $HOME/.anyenv ] ; then
+  export PATH="$HOME/.anyenv/bin:$PATH"
+  eval "$(anyenv init -)"
+fi
 
 if [ -f ~/.wp-completion.bash ]; then
   autoload -U +X bashcompinit && bashcompinit
   source ~/.wp-completion.bash
 fi
+
