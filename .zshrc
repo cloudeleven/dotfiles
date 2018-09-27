@@ -191,7 +191,7 @@ fi
 
 if [ -d $HOME/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init -)"
+  eval "$(anyenv init - zsh)"
 fi
 
 if [ -f ~/.wp-completion.bash ]; then
