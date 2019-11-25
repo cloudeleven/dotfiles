@@ -12,10 +12,11 @@ case ${UID} in
 esac
 
 export PATH=~/bin:~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:/usr/local/bin:$PATH
+export PATH=$PATH:~/dev/flutter/flutter/bin
 export MANPATH=/usr/local/share/man:$MANPATH
 export SVN_EDITOR="vi"
 export HGENCODING="UTF-8"
-export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
+#export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
 
 # mount the android file image
 # function mountDev { hdiutil attach ~/dev/dev.dmg.sparseimage -mountpoint /Volumes/dev; }
@@ -95,6 +96,8 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 bindkey "\\ep" history-beginning-search-backward-end
 bindkey "\\en" history-beginning-search-forward-end
+# NO 'kill-whole-line'
+bindkey \^U backward-kill-line
 
 ## Command history configuration
 #
@@ -140,6 +143,7 @@ alias df="df -h"
 alias su="su -l"
 
 alias ssh='ssh -o ServerAliveInterval=60'
+alias tmux='tmux -u'
 
 #alias vi='/opt/local/bin/vim'
 
@@ -182,16 +186,11 @@ esac
 #
 [ -f ~/.zshrc.mine ] && source ~/.zshrc.mine
 
-# rbenv
-if which rbenv > /dev/null; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - zsh)"
-  source ~/.rbenv/completions/rbenv.zsh
-fi
-
+# anyenv
 if [ -d $HOME/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"
   eval "$(anyenv init - zsh)"
+#  source ~/.anyenv/envs/rbenv/completions/rbenv.zsh
 fi
 
 if [ -f ~/.wp-completion.bash ]; then

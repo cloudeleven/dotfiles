@@ -2,4 +2,6 @@
     "editor.acceptSuggestionOnEnter": "off",
     "editor.autoClosingBrackets": false,
     "editor.wordWrap": "on",
+    "dart.flutterSdkPath": "/Volumes/dev/flutter/flutter",
+    "window.zoomLevel": 0,
 }
