@@ -189,7 +189,7 @@ esac
 # anyenv
 if [ -d $HOME/.anyenv ] ; then
   export PATH="$HOME/.anyenv/bin:$PATH"
-  eval "$(anyenv init - zsh)"
+  eval "$(anyenv init -)"
 #  source ~/.anyenv/envs/rbenv/completions/rbenv.zsh
 fi
 
