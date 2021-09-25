@@ -16,6 +16,7 @@ export PATH=$PATH:~/dev/flutter/flutter/bin
 export MANPATH=/usr/local/share/man:$MANPATH
 export SVN_EDITOR="vi"
 export HGENCODING="UTF-8"
+export PATH="/usr/local/opt/gettext/bin:$PATH"
 #export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
 
 # mount the android file image
@@ -201,3 +202,5 @@ fi
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
