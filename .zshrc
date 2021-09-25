@@ -12,7 +12,7 @@ case ${UID} in
 esac
 
 export PATH=~/bin:~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:/usr/local/bin:$PATH
-export PATH=$PATH:~/dev/flutter/flutter/bin
+export PATH=$PATH:~/bin/flutter/bin
 export MANPATH=/usr/local/share/man:$MANPATH
 export SVN_EDITOR="vi"
 export HGENCODING="UTF-8"
@@ -145,6 +145,9 @@ alias su="su -l"
 
 alias ssh='ssh -o ServerAliveInterval=60'
 alias tmux='tmux -u'
+if [ -f /Applications/VLC.app/Contents/MacOS/VLC ]; then
+  alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+fi
 
 #alias vi='/opt/local/bin/vim'
 
@@ -202,5 +205,9 @@ fi
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+
+#typeset -U path PATH
+#setopt magic_equal_subst
+
