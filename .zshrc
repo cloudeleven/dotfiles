@@ -126,7 +126,9 @@ alias j="jobs -l"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)
-  alias ls="ls -G -w"
+#  alias ls="ls -G -w"
+  alias ls="gls --color=auto"
+  eval `gdircolors ~/.dircolors-solarized/dircolors.256dark`
   ;;
 linux*)
   alias ls="ls --color"
