@@ -14,3 +14,7 @@ do
     ln -sfnv "${HOME}/dotfiles/$f" "${HOME}/${f}"
 done
 
+ln -sfnv "${HOME}/dotfiles/private-settings/my.rule" "${HOME}/Library/Application Support/AquaSKK/"
+
+# color-scheme: https://reasonable-code.com/solarized/
+

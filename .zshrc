@@ -11,12 +11,29 @@ case ${UID} in
   ;;
 esac
 
-export PATH=~/bin:~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:/usr/local/bin:$PATH
-export PATH=$PATH:~/bin/flutter/bin
-export MANPATH=/usr/local/share/man:$MANPATH
-export SVN_EDITOR="vi"
-export HGENCODING="UTF-8"
-export PATH="/usr/local/opt/gettext/bin:$PATH"
+typeset -U path PATH
+path=(
+  ~/bin(N-/)
+  /opt/homebrew/bin(N-/)
+  /opt/homebrew/sbin(N-/)
+  /opt/homebrew/opt/openssl@3/bin(N-/)
+  /opt/homebrew/opt/curl/bin(N-/)
+  /usr/local/bin(N-/)
+  /usr/local/sbin(N-/)
+  /usr/bin
+  /usr/sbin
+  /bin
+  /sbin
+  ~/Library/Android/sdk/tools(N-/)
+  ~/Library/Android/sdk/platform-tools(N-/)
+  ~/bin/flutter/bin(N-/)
+  /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin(N-/)
+)
+
+#export MANPATH=/usr/local/share/man:$MANPATH
+#export SVN_EDITOR="vi"
+#export HGENCODING="UTF-8"
+#export PATH="/usr/local/opt/gettext/bin:$PATH"
 #export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
 
 # mount the android file image
@@ -204,12 +221,16 @@ if [ -f ~/.wp-completion.bash ]; then
   source ~/.wp-completion.bash
 fi
 
-# Add Visual Studio Code (code)
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 #export PATH="$HOME/.jenv/bin:$PATH"
 #eval "$(jenv init -)"
 
-#typeset -U path PATH
 #setopt magic_equal_subst
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
