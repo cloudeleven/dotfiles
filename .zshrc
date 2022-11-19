@@ -20,6 +20,7 @@ path=(
   /opt/homebrew/opt/curl/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
+  /usr/local/opt/openssl@3/bin(N-/)
   /usr/bin
   /usr/sbin
   /bin
@@ -127,11 +128,6 @@ setopt share_history # share command history data
 
 setopt hist_ignore_space
 
-## Completion configuration
-#
-autoload -U compinit
-compinit
-
 ## Alias configuration
 #
 # expand aliases before completing
@@ -226,6 +222,9 @@ fi
 #eval "$(jenv init -)"
 
 #setopt magic_equal_subst
+
+## Completion configuration
+#
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
