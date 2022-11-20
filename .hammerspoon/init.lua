@@ -58,7 +58,7 @@ hs.hotkey.bind(modsFor30, 111, function() hs.window.focusedWindow():move(units.r
 
 local function terminalEvent(name, event, app)
   if event == hs.application.watcher.activated then
-    if name == 'Terminal' or name == 'ターミナル' then
+    if name == 'Terminal' or name == 'ターミナル' or name == 'iTerm2' then
       -- ターミナルでctrl + j
       hs.hotkey.bind({"ctrl"}, "j", function()
         hs.eventtap.keyStroke({}, 104, 0)
