@@ -29,6 +29,7 @@ path=(
   ~/Library/Android/sdk/platform-tools(N-/)
   ~/bin/flutter/bin(N-/)
   /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin(N-/)
+  ~/.nodebrew/current/bin(N-/)
 )
 
 #export MANPATH=/usr/local/share/man:$MANPATH
@@ -225,7 +226,6 @@ fi
 
 ## Completion configuration
 #
-
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
@@ -233,3 +233,21 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+urlencode() {
+  echo $@ | perl -nle 's/([^\w ])/"%".unpack("H2",$1)/eg; s/ /\+/g; print'
+}
+
+urlencode_jp() {
+  echo $@ | perl -nlpe 's/([^ -~])/"%".unpack("H2",$1)/eg'
+}
+
+urldecode() {
+  echo $@ | perl -nle 's/\+/ /g; s/%([\w]{2})/pack("H2",$1)/eg; print'
+}
+
+ssadb() {
+  local date_time=`date +"%Y%m%d-%H%M%S"`
+  local file_name=androidss${date_time}.png
+  # adb "$@" shell screencap -p /sdcard/${file_name} && cd ~/Downloads && adb "$@" pull /sdcard/${file_name} && adb "$@" shell rm /sdcard/${file_name} && open ~/Downloads/${file_name}
+  adb "$@" shell screencap -p /sdcard/${file_name} && adb "$@" pull /sdcard/${file_name} && adb "$@" shell rm /sdcard/${file_name} && open ./${file_name}
+}

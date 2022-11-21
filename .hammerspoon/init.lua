@@ -14,9 +14,9 @@ units = {
   top30         = { x = 0.00, y = 0.00, w = 1.00, h = 0.30 },
   bottom30      = { x = 0.00, y = 0.70, w = 1.00, h = 0.30 }
 }
-modsFor50 = { 'ctrl', 'command' }
-modsFor70 = { 'ctrl', 'shift' }
-modsFor30 = { 'ctrl', 'shift', 'command' }
+modsFor50 = { 'ctrl', 'shift' }
+modsFor70 = { 'ctrl', 'shift', 'option' }
+modsFor30 = { 'ctrl', 'shift', 'option', 'command' }
 hs.hotkey.bind(modsFor50, 'left', function() hs.window.focusedWindow():move(units.left50, nil, true) end)
 hs.hotkey.bind(modsFor50, 'right', function() hs.window.focusedWindow():move(units.right50, nil, true) end)
 hs.hotkey.bind(modsFor50, 'up', function() hs.window.focusedWindow():move(units.top50, nil, true) end)

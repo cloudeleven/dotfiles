@@ -7,14 +7,4 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = true
 insert_final_newline = true
-
-[*.md]
-insert_final_newline = true
-
-[*.{js,java,go,c,cpp,tex}]
-trim_trailing_whitespace = true
-insert_final_newline = true
-
-[*.{md,c,cpp,tex}]
-indent_style = space
-indent_size = 4
+max_line_length=999 # avoid editor settings
