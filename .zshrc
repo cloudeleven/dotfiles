@@ -11,6 +11,9 @@ case ${UID} in
   ;;
 esac
 
+#export ANDROID_HOME="~/Library/Android/sdk"
+#export ANDROID_SDK="~/Library/Android/sdk"
+
 typeset -U path PATH
 path=(
   ~/bin(N-/)
@@ -25,12 +28,18 @@ path=(
   /usr/sbin
   /bin
   /sbin
+  ~/Library/Android/sdk/cmdline-tools/latest/bin(N-/)
+  ~/Library/Android/sdk/emulator(N-/)
   ~/Library/Android/sdk/tools(N-/)
+  ~/Library/Android/sdk/tools/bin(N-/)
   ~/Library/Android/sdk/platform-tools(N-/)
+  ~/Library/Android/sdk/platform-tools/bin(N-/)
   ~/bin/flutter/bin(N-/)
   /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin(N-/)
   ~/.nodebrew/current/bin(N-/)
 )
+
+#export EDITOR="vi"
 
 #export MANPATH=/usr/local/share/man:$MANPATH
 #export SVN_EDITOR="vi"
@@ -43,6 +52,19 @@ path=(
 
 # set the number of open files to be 1024
 ulimit -S -n 1024
+
+# prompt for git
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}+"
+zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+
+# プロンプトカスタマイズ
+#PROMPT='[%B%F{red}%n@%m%f%b:%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f%F{yellow}$%f '
 
 ## Default shell configuration
 #
@@ -64,8 +86,11 @@ case ${UID} in
 #  PROMPT="%U$USER@%m%%%u "
 #  PROMPT="%{${fg[green]}%}$USER${reset_color}%}@%m%{${fg[blue]}%}%%${reset_color} "
   PROMPT="%{${fg[green]}%}$USER@%m%%%{${reset_color}%} "
-  RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
-#
+#  RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
+#  RPROMPT='%F{cyan}$vcs_info_msg_0_%f'
+# ↑ ふたつを合わせて
+  RPROMPT='%F{cyan}$vcs_info_msg_0_ %{${fg[blue]}%}[%~]%{${reset_color}%}'
+
 #  PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
   PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
@@ -159,7 +184,7 @@ alias df="df -h"
 
 alias su="su -l"
 
-alias ssh='ssh -o ServerAliveInterval=60'
+#alias ssh='ssh -o ServerAliveInterval=60'
 alias tmux='tmux -u'
 if [ -f /Applications/VLC.app/Contents/MacOS/VLC ]; then
   alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
@@ -251,3 +276,4 @@ ssadb() {
   # adb "$@" shell screencap -p /sdcard/${file_name} && cd ~/Downloads && adb "$@" pull /sdcard/${file_name} && adb "$@" shell rm /sdcard/${file_name} && open ~/Downloads/${file_name}
   adb "$@" shell screencap -p /sdcard/${file_name} && adb "$@" pull /sdcard/${file_name} && adb "$@" shell rm /sdcard/${file_name} && open ./${file_name}
 }
+
